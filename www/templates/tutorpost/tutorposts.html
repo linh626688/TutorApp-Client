@@ -1,0 +1,17 @@
+<ion-view view-title="Tutor Post List">
+  <ion-content>
+    <ion-list>
+      <ion-item ng-repeat="post in listTutor" >
+        <a class="item item-thumbnail-left" href="#/app/tutor-posts/{{post.id}}">
+          <img src=" {{post.url_image}}">
+          {{post.id}} <br>
+          {{post.postContent}} <br>
+          {{post.subject}} <br>
+          {{post.time}} <br>
+          {{post.timepost}} <br>
+          {{post.tutorId}} <br>
+        </a>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
