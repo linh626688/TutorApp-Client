@@ -7,7 +7,7 @@
 
 angular.module('app.controllers', []);
 angular.module('app.config', []);
-angular.module('app', ['ionic', 'app.controllers', 'app.run', 'app.config'])
+var app = angular.module('app', ['ionic', 'app.controllers', 'app.run', 'app.config', 'ionic-material'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -51,6 +51,15 @@ angular.module('app.config')
           }
         }
       })
+      .state('app.register', {
+        url: '/register',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/login/register.html',
+            controller: 'RegisterCtrl'
+          }
+        }
+      })
       .state('app.tutor-posts', {
         url: '/tutor-posts',
         views: {
@@ -69,6 +78,26 @@ angular.module('app.config')
           }
         }
       })
+      .state('app.tutors', {
+        url: '/tutors',
+        views: {
+          'menuContent': {
+            controller: 'TutorsCtrl',
+            templateUrl: 'templates/user/tutor/tutors.html'
+          }
+        }
+      })
+      .state('app.tutor', {
+        url: '/tutors/:tutorId',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/user/tutor/tutor.html',
+            controller: 'TutorCtrl'
+          }
+        }
+      })
+
+
       .state('app.parent-post', {
         url: '/parent-post',
         views: {
@@ -81,6 +110,4 @@ angular.module('app.config')
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/tutor-posts');
   })
-
-;
 

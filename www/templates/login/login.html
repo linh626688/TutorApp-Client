@@ -1,7 +1,7 @@
 <ion-view view-title="Login">
   <ion-content>
-    <br> <br><br>
     <form ng-submit="doLogin()">
+      <br>
       <div class="list">
         <label class="item item-input">
           <span class="input-label">Username</span>
@@ -26,5 +26,11 @@
         Logout FB
       </button>
     </label>
+    <label class="item">
+      <button class="button button-block button-positive" ng-click="toRegister()">
+        Register
+      </button>
+    </label>
+
   </ion-content>
 </ion-view>

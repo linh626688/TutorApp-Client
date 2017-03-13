@@ -131,5 +131,8 @@ angular.module('app')
         }
       });
     };
+    $scope.toRegister = function () {
+      $state.go('app.register');
+    }
   });
 

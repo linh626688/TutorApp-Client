@@ -1,6 +1,12 @@
 <ion-view view-title="Tutor Post List">
   <ion-content>
-    <ion-list>
+    <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search">
+      </label>
+    </div>
+    <ion-list class="animate-ripple">
       <ion-item ng-repeat="post in listTutor" >
         <a class="item item-thumbnail-left" href="#/app/tutor-posts/{{post.id}}">
           <img src=" {{post.url_image}}">

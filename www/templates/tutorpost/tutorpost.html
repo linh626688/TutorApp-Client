@@ -1,12 +1,29 @@
 <ion-view view-title="Tutor Post">
   <ion-content>
     <h1>Tutor Post</h1>
-    {{postDetail.id}}
-    {{postDetail.id}} <br>
-    {{postDetail.postContent}} <br>
-    {{postDetail.subject}} <br>
-    {{postDetail.time}} <br>
-    {{postDetail.timepost}} <br>
-    {{postDetail.tutorId}} <br>
+    <div class="list card stable-bg">
+      <div class="item item-avatar">
+        <img src="img/arya.jpg">
+        <h2>{{postDetail.id}} </h2>
+
+      </div>
+      <div class="item item-body">
+        {{postDetail.postContent}} <br>
+        {{postDetail.subject}} <br>
+        {{postDetail.time}} <br>
+        {{postDetail.timepost}} <br>
+        {{postDetail.tutorId}} <br>
+      </div>
+      <div class="item tabs tabs-secondary tabs-icon-left">
+        <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
+          <i class="icon ion-thumbsup"></i> Like
+        </a>
+        <a class="tab-item" data-ink-color="#336699" data-ink-opacity="0.5">
+          <i class="icon ion-share"></i> Share
+        </a>
+      </div>
+    </div>
+
   </ion-content>
 </ion-view>
+

@@ -1,0 +1,21 @@
+<ion-view view-title="Tutor List">
+  <ion-content>
+    <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search">
+      </label>
+    </div>
+    <ion-list class="animate-ripple">
+      <ion-item ng-repeat="tutor in tutors" >
+        <a class="item item-thumbnail-left" href="#/app/tutors/{{tutor.id}}">
+          <img src=" {{tutor.url_image}}">
+          {{tutor.id}} <br>
+          {{tutor.fristname}} <br>
+          {{tutor.lastname}} <br>
+          {{tutor.gender}} <br>
+        </a>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
