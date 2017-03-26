@@ -7,15 +7,18 @@
       </label>
     </div>
     <ion-list class="animate-ripple">
-      <ion-item ng-repeat="post in listTutor" >
+      <ion-item ng-repeat="post in postTutors" >
         <a class="item item-thumbnail-left" href="#/app/tutor-posts/{{post.id}}">
-          <img src=" {{post.url_image}}">
+          <img src=" {{post.imagePost}}">
           {{post.id}} <br>
-          {{post.postContent}} <br>
           {{post.subject}} <br>
-          {{post.time}} <br>
-          {{post.timepost}} <br>
-          {{post.tutorId}} <br>
+          {{post.times}} <br>
+          {{post.timePost}} <br>
+          {{post.salaryDesired}} <br>
+          {{post.locationDesired}} <br>
+          {{post.classRequirement}} <br>
+          {{post.classLevel}} <br>
+          {{post.locationDesired}} <br>
         </a>
       </ion-item>
     </ion-list>

@@ -1,10 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+<ion-view view-title="Danh Sách Các Lớp Học">
+  <ion-content>
+    <div  class="list card"  ng-repeat="post in postParents"  href="#/app/parent-posts/{{post.id}}">
+      <p>{{post.classRequirement}}</p>
+      <p>{{post.contact}}</p>
+      <p>{{post.salaryDesired}}</p>
+      <p>{{post.classLevel}}</p>
+      <p>{{post.locationDesired}}</p>
+      <p>{{post.period}}</p>
+      <p>{{post.times}}</p>
+      <p>{{post.subject}}</p>
+    </div>
 
-</body>
-</html>
+  </ion-content>
+</ion-view>

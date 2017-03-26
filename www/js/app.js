@@ -96,14 +96,46 @@ angular.module('app.config')
           }
         }
       })
-
-
+      .state('app.tutor-update', {
+        url: '/tutor-update',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/login/tutor-login/tutor-login.html'
+          }
+        }
+      })
+      .state('app.parent-update', {
+        url: '/parent-update',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/login/parent-login/parent-login.html'
+          }
+        }
+      })
+      .state('app.update-tutor-post', {
+        url: '/update-tutor-post',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/tutorpost/create-post/update-tutor-post.html',
+            controller :'updateTutorPost'
+          }
+        }
+      })
       .state('app.parent-post', {
-        url: '/parent-post',
+        url: '/parent-posts/:postId',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/parentpost/parentpost.html',
+            controller: 'ParentPostCtrl'
+          }
+        }
+      })
+      .state('app.parent-posts', {
+        url: '/parent-posts',
         views: {
           'menuContent': {
             templateUrl: 'templates/parentpost/parentposts.html',
-            controller: 'ParentPostCtrl'
+            controller: 'ParentPostsCtrl'
           }
         }
       });

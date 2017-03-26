@@ -2,11 +2,11 @@
  * Created by DangThanhLinh on 07/03/2017.
  */
 angular.module('app')
-  .controller('TutorPostCtrl', function ($scope, $stateParams, TutorPost) {
-    angular.forEach(TutorPost, function (post) {
-      if (post.id === $stateParams.postId) {
-        $scope.postDetail = post;
-      }
-    });
+  .controller('TutorPostCtrl', function ($scope, $stateParams, tutorPostService) {
+    $scope.postDetail = [];
+    tutorPostService.getPostTutor($stateParams.postId)
+      .success(function (response) {
+        $scope.postDetail = response;
+      })
     console.log($stateParams.postId)
   });
