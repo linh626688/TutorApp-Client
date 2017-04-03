@@ -1,33 +1,33 @@
-<ion-view view-title="Update Post Tutuor">
+<script src="update-tutor-post.js"></script>
+<ion-view view-title="Cập Nhật Chi Tiết Gia Sư">
   <ion-content>
     <div class="list">
       <label class="item item-input item-stacked-label">
         <span class="input-label">Nhận Môn</span>
-        <input type="text" placeholder="Placeholder 1" ng-model="postDetail.subject">
+        <input type="text" placeholder="Môn Học Nhận dậy (Toán , Vắn, ...)" ng-model="postDetail.subject">
       </label>
-
       <label class="item item-input item-stacked-label">
         <span class="input-label">Cấp độ</span>
-        <input type="text" placeholder="Placeholder 2" ng-model="postDetail.postContent">
+        <input type="text" placeholder="Trình độ học sinh" ng-model="postDetail.classLevel">
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Lương yêu cầu </span>
-        <input type="text" placeholder="Placeholder 2" ng-model="postDetail.postContent">
+        <input type="text" placeholder="Lương Mong Muốn" ng-model="postDetail.salaryDesired">
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Thời gian</span>
-        <input type="text" placeholder="Placeholder 2"ng-model="postDetail.postContent">
+        <input type="text" placeholder="Thời gian lên lớp (Thứ 2 / 18h-20h)" ng-model="postDetail.times">
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Khu vực Giảng dậy</span>
-        <input type="text" placeholder="Placeholder 2" ng-model="postDetail.postContent">
-      </label>
-      <label class="item item-input item-stacked-label" ng-model="postDetail.postContent">
-        <span class="input-label">Chú thích</span>
-        <input type="text" placeholder="Placeholder 2" ng-model="postDetail.postContent">
+        <input type="text" placeholder="Khu Vực Nhận Lớp " ng-model="postDetail.locationDesired">
       </label>
       <label class="item item-input item-stacked-label">
-        <button class="button" ng-click="savepost()">button</button>
+        <span class="input-label">Chú thích</span>
+        <input type="text" placeholder="Thông tin thêm" ng-model="postDetail.classRequirement">
+      </label>
+      <label class="item item-input item-stacked-label">
+        <button class="button" ng-click="createPostTutor()"> Submit </button>
       </label>
     </div>
 

@@ -9,4 +9,4 @@ angular.module('app')
         $scope.postParents = response;
         console.log(response)
       })
-  })
+  });

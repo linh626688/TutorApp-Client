@@ -5,8 +5,11 @@ angular.module('app')
   .factory('tutorPostService', function ($http) {
     return {
       getAllPostTutors: getAllPostTutors,
-      getPostTutor: getPostTutor
-    }
+      getPostTutor: getPostTutor,
+      createPostTutor: createPostTutor,
+      deletePostTutor: deletePostTutor,
+      editPostTutor: editPostTutor
+    };
     function getAllPostTutors() {
       return $http({
           url: 'http://35.185.156.51:8080/allPostTutor',
@@ -16,10 +19,39 @@ angular.module('app')
     }
     function getPostTutor(postId) {
       return $http({
-          url: 'http://35.185.156.51:8080/postTutor/'+postId,
+          url: 'http://35.185.156.51:8080/postTutor/' + postId,
           method: 'GET'
-        }
-      );
+        });
     }
-
-  })
+    function createPostTutor(opts, token) {
+      return $http({
+        url: 'http://35.185.156.51:8080/createPostTutor/',
+        method: 'POST',
+        data: opts,
+        headers: {
+          'auth-token': token,
+          'Content-Type': 'application/json'
+        }
+      });
+    }
+    function deletePostTutor(token, postId) {
+      return $http({
+        url: 'http://35.185.156.51:8080/deletePostTutor/' + postId,
+        method: 'DELETE',
+        headers: {
+          'auth-token': token,
+          'Content-Type': 'application/json'
+        }
+      });
+    }
+    function editPostTutor(token, postId) {
+      return $http({
+        url: 'http://35.185.156.51:8080/editPostTutor/' + postId,
+        method: 'PUT',
+        headers: {
+          'auth-token': token,
+          'Content-Type': 'application/json'
+        }
+      });
+    }
+  });

@@ -7,7 +7,7 @@
 
 angular.module('app.controllers', []);
 angular.module('app.config', []);
-var app = angular.module('app', ['ionic', 'app.controllers', 'app.run', 'app.config', 'ionic-material'])
+var app = angular.module('app', ['ionic', 'app.controllers', 'app.run', 'app.config', 'ionic-material','ngCordova'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -60,6 +60,24 @@ angular.module('app.config')
           }
         }
       })
+      .state('app.search-parent', {
+        url: '/search-parent',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/search/search-parent/search-parent.html',
+            controller: 'SearchParentCtrl'
+          }
+        }
+      })
+      .state('app.search-tutor', {
+        url: '/search-tutor',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/search/search-tutor/search-tutor.html',
+            controller: 'SearchTutorCtrl'
+          }
+        }
+      })
       .state('app.tutor-posts', {
         url: '/tutor-posts',
         views: {
@@ -75,6 +93,15 @@ angular.module('app.config')
           'menuContent': {
             templateUrl: 'templates/tutorpost/tutorpost.html',
             controller: 'TutorPostCtrl'
+          }
+        }
+      })
+      .state('app.tutor-post-image', {
+        url: '/tutor-post-image/:postId',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/tutorpost/create-post/update-post-image.html',
+            controller: 'updateTutorPost'
           }
         }
       })
@@ -121,6 +148,15 @@ angular.module('app.config')
           }
         }
       })
+      .state('app.update-parent-post', {
+        url: '/update-parent-post',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/parentpost/create-post/update-parent-post.html',
+            controller :'updateParentPost'
+          }
+        }
+      })
       .state('app.parent-post', {
         url: '/parent-posts/:postId',
         views: {
@@ -141,5 +177,5 @@ angular.module('app.config')
       });
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/tutor-posts');
-  })
+  });
 

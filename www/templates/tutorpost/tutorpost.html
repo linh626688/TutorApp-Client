@@ -1,6 +1,5 @@
-<ion-view view-title="Tutor Post">
+<ion-view view-title="Chi Tiết Gia Sư">
   <ion-content>
-    <h1>Tutor Post</h1>
     <div class="list card stable-bg">
       <div class="item item-avatar">
         <img src="{{postDetail.imagePost}}">
@@ -14,9 +13,14 @@
         {{postDetail.timePost}} <br>
         {{postDetail.salaryDesired}} <br>
         {{postDetail.locationDesired}} <br>
-        {{postDetail.classRequirement}} <br>
+        {{postDetail.about}} <br>
         {{postDetail.classLevel}} <br>
         {{postDetail.locationDesired}} <br>
+        {{postDetail.tutor.name}} <br>
+        {{postDetail.tutor.birth}} <br>
+        {{postDetail.tutor.currentJob}} <br>
+        <button class="button icon-left ion-edit" ng-click="editPost()">Sửa Bài Đăng</button>
+        <button class="button icon-left ion-android-delete" ng-click="deletePost()">Xóa Bài Đăng </button>
       </div>
 
     </div>

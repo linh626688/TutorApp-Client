@@ -7,6 +7,11 @@ angular.module('app')
     tutorPostService.getPostTutor($stateParams.postId)
       .success(function (response) {
         $scope.postDetail = response;
-      })
-    console.log($stateParams.postId)
+      });
+    console.log($stateParams.postId);
+    //TODO
+    $scope.editPost = function () {
+    };
+    $scope.deletePost = function () {
+    }
   });

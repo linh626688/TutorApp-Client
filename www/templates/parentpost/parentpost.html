@@ -1,4 +1,4 @@
-<ion-view view-title="Parent postDetail">
+<ion-view view-title="Chi Tiết Lớp Học">
   <ion-content>
     <p>{{postDetail.classRequirement}}</p>
     <p>{{postDetail.contact}}</p>
@@ -8,5 +8,8 @@
     <p>{{postDetail.period}}</p>
     <p>{{postDetail.times}}</p>
     <p>{{postDetail.subject}}</p>
+
+    <button class="button" ng-click="updatePostParent()"> Sửa thông tin lớp </button>
+    <button class="button" ng-click="deletePostParent()"> Xóa lớp học này  </button>
   </ion-content>
 </ion-view>

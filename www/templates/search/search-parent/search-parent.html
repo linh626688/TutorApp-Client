@@ -1,0 +1,41 @@
+<ion-view view-title="Tìm Lớp Xung Quanh">
+  <ion-content>
+    <div class="list">
+      <label class="item item-input item-stacked-label">
+        <span class="input-label">Điền Vị Trí</span>
+        <input type="text" placeholder="Xã-Phố, Huyện-Phường, Quận , Tỉnh" ng-model="input.location">
+      </label>
+      <label class="item-input item-select">
+        <div class="input-label">
+          Khoảng Cách
+        </div>
+        <select ng-model="input.distance" >
+          <option ng-repeat="option in distances" value="{{option.value}}">{{option.name}}</option>
+        </select>
+
+      </label>
+      <label class="item item-input item-stacked-label">
+        <button class="button" ng-click="searchParent()"> Submit</button>
+      </label>
+    </div>
+    <ion-list>
+      <ion-item ng-repeat="post in resultPosts.data" >
+        <a class="item item-thumbnail-left" href="#/app/tutor-posts/{{post.id}}">
+          <img src=" {{post.imagePost}}">
+          {{post.id}} <br>
+          {{post.subject}} <br>
+          {{post.times}} <br>
+          {{post.timePost}} <br>
+          {{post.salaryDesired}} <br>
+          {{post.locationDesired}} <br>
+          {{post.about}} <br>
+          {{post.classLevel}} <br>
+          {{post.locationDesired}} <br>
+          {{post.tutor.name}} <br>
+          {{post.tutor.birth}} <br>
+          {{post.tutor.currentJob}} <br>
+        </a>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

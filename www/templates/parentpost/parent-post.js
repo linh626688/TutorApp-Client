@@ -8,5 +8,11 @@ angular.module('app')
       .success(function (response) {
         $scope.postDetail = response;
         console.log(response)
-      })
+      });
+    $scope.updatePostParent = function () {
+      // parentPostService.editPostParent(token,data),
+    }
+    $scope.deletePostParent = function () {
+      // parentPostService.deletePostParent(token, postId)
+    }
   });

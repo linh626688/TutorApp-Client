@@ -1,0 +1,27 @@
+<ion-view view-title="Thêm ảnh cho Gia Sư">
+  <ion-content>
+    <div class="item item-body">
+      {{postDetail.id}} <br>
+      {{postDetail.subject}} <br>
+      {{postDetail.times}} <br>
+      {{postDetail.timePost}} <br>
+      {{postDetail.salaryDesired}} <br>
+      {{postDetail.locationDesired}} <br>
+      {{postDetail.classRequirement}} <br>
+      {{postDetail.classLevel}} <br>
+      {{postDetail.locationDesired}} <br>
+
+      <div class="button-bar">
+        <button class="button icon-left ion-camera" ng-click="loadImage()">Take Photo</button>
+        <button class="button icon-left ion-upload" ng-click="uploadImage()" ng-disabled="image === null">Upload</button>
+        <button class="button icon-left ion-android-delete" ng-click="deletePost()"> Cancel </button>
+
+      </div>
+
+      <div class="item item-image">
+        <img src="{{ pathForImage(image) }}">
+      </div>
+
+    </div>
+  </ion-content>
+</ion-view>

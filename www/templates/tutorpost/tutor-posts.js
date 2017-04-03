@@ -7,7 +7,7 @@ angular.module('app')
     tutorPostService.getAllPostTutors()
       .success(function (response) {
         $scope.postTutors = response;
-      })
+      });
     var reset = function () {
       var inClass = document.querySelectorAll('.in');
       for (var i = 0; i < inClass.length; i++) {
@@ -26,7 +26,7 @@ angular.module('app')
           ionList[i].className = ionList[i].className.replace(/(?:^|\s)animate-\S*(?:$|\s)/, '');
         }
       }
-    }
+    };
     $scope.ripple = function () {
       reset();
       document.getElementsByTagName('ion-list')[0].className += ' animate-ripple';
