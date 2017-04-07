@@ -1,4 +1,4 @@
-<ion-view view-title="Tìm Lớp Xung Quanh">
+<ion-view view-title="Tìm Gia Sư ở Xung Quanh">
   <ion-content>
     <div class="list">
       <label class="item item-input item-stacked-label">
@@ -10,14 +10,17 @@
           Khoảng Cách
         </div>
         <select ng-model="input.distance" >
-          <option ng-repeat="option in distances" value="{{option.value}}">{{option.name}}</option>
+          <option ng-repeat="option in distances" value="{{option.value}}" placeholder="xxxx">{{option.name}}</option>
         </select>
 
       </label>
       <label class="item item-input item-stacked-label">
-        <button class="button" ng-click="searchParent()"> Submit</button>
+        <button class="button" ng-click="searchParent()">  Tìm Kiếm với vị trí nhập vào </button>
       </label>
     </div>
+    <label class="item item-input item-stacked-label">
+      <button class="button" ng-click="searchCurrentLocation()"> Tìm Kiếm với vị trí hiện tại</button>
+    </label>
     <ion-list>
       <ion-item ng-repeat="post in resultPosts.data" >
         <a class="item item-thumbnail-left" href="#/app/tutor-posts/{{post.id}}">

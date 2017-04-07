@@ -78,6 +78,15 @@ angular.module('app.config')
           }
         }
       })
+      .state('app.get-current', {
+        url: '/get-current',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/search/get-position/get-position.html',
+            controller: 'GetCurrent'
+          }
+        }
+      })
       .state('app.tutor-posts', {
         url: '/tutor-posts',
         views: {

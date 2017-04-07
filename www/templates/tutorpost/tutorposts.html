@@ -7,7 +7,7 @@
       </label>
     </div>
     <ion-list class="animate-ripple">
-      <ion-item ng-repeat="post in postTutors" >
+      <ion-item ng-repeat="post in postTutors |  orderBy:'post.tutor.name'">
         <a class="item item-thumbnail-left" href="#/app/tutor-posts/{{post.id}}">
           <img src=" {{post.imagePost}}">
           {{post.id}} <br>
