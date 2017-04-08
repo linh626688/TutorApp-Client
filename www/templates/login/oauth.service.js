@@ -7,7 +7,10 @@ angular.module('app')
       registerUser: registerUser,
       userLogin: userLogin,
       userLogout: userLogout,
-      addRoleUser: addRoleUser
+      addRoleUser: addRoleUser,
+      updateParent: updateParent,
+      updateTutor: updateTutor
+
     };
     function registerUser(dataUser) {
       return $http({
@@ -31,12 +34,44 @@ angular.module('app')
       })
     }
 
-    function userLogout() {
-
+    function userLogout(token) {
+      return $http({
+        url: 'http://35.185.156.51:8080/logout',
+        method: 'POST',
+        headers: {
+          'auth-token': token,
+          'Content-Type': 'application/json'
+        }
+      })
     }
 
 
     function addRoleUser() {
 
     }
+
+    function updateParent(token, data, parentId) {
+      return $http({
+        url: 'http://35.185.156.51:8080/updateParent/' + parentId,
+        method: 'PUT',
+        data: data,
+        headers: {
+          'auth-token': token,
+          'Content-Type': 'application/json'
+        }
+      })
+    }
+
+    function updateTutor(token, data, tutorId) {
+      return $http({
+        url: 'http://35.185.156.51:8080/updateTutor/' + tutorId,
+        method: 'PUT',
+        data: data,
+        headers: {
+          'auth-token': token,
+          'Content-Type': 'application/json'
+        }
+      })
+    }
+
   });

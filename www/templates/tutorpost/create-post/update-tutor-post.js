@@ -2,12 +2,11 @@
  * Created by DangThanhLinh on 15/03/2017.
  */
 angular.module('app')
-  .controller('updateTutorPost', function ($state, $scope, $cordovaCamera, $cordovaFile, $cordovaFileTransfer, $cordovaDevice, $ionicPopup, $cordovaActionSheet, tutorPostService, $stateParams) {
+  .controller('updateTutorPost', function ($state, $scope, $cordovaCamera,$localStorage, $cordovaFile, $cordovaFileTransfer, $cordovaDevice, $ionicPopup, $cordovaActionSheet, tutorPostService, $stateParams) {
     $scope.image = null;
     $scope.newPost = [];
     $scope.postDetail = [];
-    $scope.tokenTutor = 'tokentutor';
-    $scope.tempId = [];
+    $scope.tokenTutor = $localStorage.user.data.token;
     $scope.createPostTutor = function () {
       var request = {
         subject: $scope.postDetail.subject,

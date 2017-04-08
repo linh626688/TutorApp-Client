@@ -7,7 +7,7 @@
 
 angular.module('app.controllers', []);
 angular.module('app.config', []);
-var app = angular.module('app', ['ionic', 'app.controllers', 'app.run', 'app.config', 'ionic-material','ngCordova'])
+var app = angular.module('app', ['ionic', 'app.controllers', 'app.run', 'app.config', 'ionic-material','ngCordova','ngStorage'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -48,6 +48,24 @@ angular.module('app.config')
           'menuContent': {
             templateUrl: 'templates/login/login.html',
             controller: 'OauthCtrl'
+          }
+        }
+      })
+      .state('app.tutor-detail', {
+        url: '/tutor-detail',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/login/tutor-login/tutor-login.html',
+            controller: 'TutorUpdateCtrl'
+          }
+        }
+      })
+      .state('app.parent-detail', {
+        url: '/parent-detail',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/login/parent-login/parent-login.html',
+            controller: 'ParentUpdateCtrl'
           }
         }
       })
@@ -129,6 +147,15 @@ angular.module('app.config')
           'menuContent': {
             templateUrl: 'templates/user/tutor/tutor.html',
             controller: 'TutorCtrl'
+          }
+        }
+      })
+      .state('app.parents', {
+        url: '/parents',
+        views: {
+          'menuContent': {
+            controller: 'ParentsCtrl',
+            templateUrl: 'templates/user/parent/parents.html'
           }
         }
       })

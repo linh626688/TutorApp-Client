@@ -2,10 +2,10 @@
  * Created by DangThanhLinh on 28/03/2017.
  */
 angular.module('app')
-  .controller('updateParentPost', function ($state, $scope, $stateParams, parentPostService) {
+  .controller('updateParentPost', function ($state, $scope, $stateParams, $localStorage, parentPostService) {
     $scope.postDetail = [];
     $scope.newPost = [];
-    $scope.tokenParent = 'tokenparent';
+    $scope.tokenParent = $localStorage.user.data.token;
     console.log('Input', $scope.postDetail);
     $scope.createPostParent = function () {
       var request = {

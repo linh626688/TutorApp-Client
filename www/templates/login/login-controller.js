@@ -1,8 +1,9 @@
 angular.module('app')
-  .controller('OauthCtrl', function ($scope, $state, $q, $timeout, $ionicPopup, UserService, $ionicLoading, $ionicActionSheet, OauthService,ionicMaterialInk) {
+  .controller('OauthCtrl', function ($scope, $state, $q, $timeout, $ionicPopup, $ionicHistory, UserService, $ionicLoading, $ionicActionSheet, OauthService, ionicMaterialInk, $localStorage) {
     $scope.loginData = [];
     $scope.User = [];
 
+    console.log($localStorage.user);
     // This is the success callback from the login method
     var fbLoginSuccess = function (response) {
       if (!response.authResponse) {
@@ -147,9 +148,15 @@ angular.module('app')
           function (response) {
             $scope.User = response;
             // console.log(response);
-            // $scope.showPopup();
+            $scope.showPopup();
             $localStorage.user = response;
-            console.log($localStorage.user)
+            console.log("$localStorage", $localStorage.user);
+            if ($localStorage.user.data.tutor != null) {
+              $state.go('app.tutor-detail')
+            } else {
+              $state.go('app.parent-detail')
+            }
+
           }
           , function (error, data) {
             console.log(error + data)
@@ -177,5 +184,17 @@ angular.module('app')
         ionicMaterialInk.displayEffect();
       }, 0);
     };
+
+    $scope.logOutUser = function () {
+      OauthService.userLogout($localStorage.user.data.token)
+        .then(
+          function () {
+            $state.go('app.tutor-posts');
+            $window.localStorage.clear();
+            $ionicHistory.clearCache();
+            $ionicHistory.clearHistory();
+          }
+        )
+    }
   });
 

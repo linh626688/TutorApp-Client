@@ -2,11 +2,14 @@
  * Created by DangThanhLinh on 08/03/2017.
  */
 angular.module('app')
-  .controller('TutorCtrl', function ($scope, $http, Tutor, $stateParams) {
-    angular.forEach(Tutor, function (tutor) {
-      if (tutor.id === $stateParams.tutorId) {
-        $scope.tutorDetail = tutor;
-      }
-    });
-    console.log($stateParams.tutorId)
-  })
+  .controller('TutorCtrl', function ($scope, $http, $stateParams) {
+    console.log($stateParams.tutorId);
+    $scope.tutor = [];
+    $scope.getTutorDetail = function () {
+      $http.get('http://35.185.156.51:8080/getTutor/' + $stateParams.tutorId)
+        .success(function (response) {
+          $scope.tutor = response;
+          console.log(response)
+        })
+    }();
+  });
