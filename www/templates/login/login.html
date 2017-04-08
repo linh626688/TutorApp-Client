@@ -1,6 +1,8 @@
+<script src="login-controller.js"></script>
 <ion-view view-title="Login">
   <ion-content>
-    <form ng-submit="doLogin()">
+
+    <form ng-submit="loginUser()">
       <br>
       <div class="list">
         <label class="item item-input">
@@ -16,6 +18,7 @@
         </label>
       </div>
     </form>
+
     <label class="item">
       <button class="button button-block button-positive" ng-click="loginfb()">
         Login with Facebook

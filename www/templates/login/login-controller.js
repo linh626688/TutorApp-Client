@@ -1,5 +1,8 @@
 angular.module('app')
-  .controller('OauthCtrl', function ($scope, $state, $q, UserService, $ionicLoading, $ionicActionSheet) {
+  .controller('OauthCtrl', function ($scope, $state, $q, $timeout, $ionicPopup, UserService, $ionicLoading, $ionicActionSheet, OauthService,ionicMaterialInk) {
+    $scope.loginData = [];
+    $scope.User = [];
+
     // This is the success callback from the login method
     var fbLoginSuccess = function (response) {
       if (!response.authResponse) {
@@ -53,7 +56,6 @@ angular.module('app')
     //This method is executed when the user press the "Login with facebook" button
     $scope.loginfb = function () {
       console.log('Click xxxx ');
-      window.alert('333333333');
       facebookConnectPlugin.getLoginStatus(function (success) {
         if (success.status === 'connected') {
           // The user is logged in and has authenticated your app, and response.authResponse supplies
@@ -133,6 +135,47 @@ angular.module('app')
     };
     $scope.toRegister = function () {
       $state.go('app.register');
-    }
+    };
+    $scope.loginUser = function () {
+      $scope.input = {
+        username: $scope.loginData.username,
+        password: $scope.loginData.password
+      };
+      $scope.loading();
+      OauthService.userLogin($scope.input)
+        .then(
+          function (response) {
+            $scope.User = response;
+            // console.log(response);
+            // $scope.showPopup();
+            $localStorage.user = response;
+            console.log($localStorage.user)
+          }
+          , function (error, data) {
+            console.log(error + data)
+          }
+        )
+    };
+    $scope.loading = function () {
+      $ionicLoading.show({
+        template: '<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
+      });
+
+      // For example's sake, hide the sheet after two seconds
+      $timeout(function () {
+        $ionicLoading.hide();
+      }, 2000);
+    };
+
+    $scope.showPopup = function () {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Xin chào tới TUTOR APP'
+      });
+
+      $timeout(function () {
+        //ionic.material.ink.displayEffect();
+        ionicMaterialInk.displayEffect();
+      }, 0);
+    };
   });
 
