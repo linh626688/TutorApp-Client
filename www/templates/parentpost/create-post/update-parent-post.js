@@ -14,6 +14,8 @@ angular.module('app')
         locationDesired: $scope.postDetail.locationDesired,
         classRequirement: $scope.postDetail.classRequirement,
         times: $scope.postDetail.times,
+        period : $scope.postDetail.period,
+        contact : $scope.postDetail.contact,
         classLevel: $scope.postDetail.classLevel
       };
       parentPostService.createPostParent($scope.tokenParent, request)

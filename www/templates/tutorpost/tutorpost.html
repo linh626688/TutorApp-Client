@@ -1,29 +1,37 @@
 <ion-view view-title="Chi Tiết Gia Sư">
   <ion-content>
-    <div class="list card stable-bg">
+    <a class="list card stable-bg"">
       <div class="item item-avatar">
         <img src="{{postDetail.imagePost}}">
-        <h2>{{postDetail.id}} </h2>
-
+        <h2>{{postDetail.tutor.name}}</h2>
+        <h2>{{postDetail.tutor.birth}}</h2>
+        <h2>{{postDetail.tutor.currentJob}}</h2>
       </div>
       <div class="item item-body">
-        {{postDetail.id}} <br>
-        {{postDetail.subject}} <br>
-        {{postDetail.times}} <br>
-        {{postDetail.timePost}} <br>
-        {{postDetail.salaryDesired}} <br>
-        {{postDetail.locationDesired}} <br>
-        {{postDetail.about}} <br>
-        {{postDetail.classLevel}} <br>
-        {{postDetail.locationDesired}} <br>
-        {{postDetail.tutor.name}} <br>
-        {{postDetail.tutor.birth}} <br>
-        {{postDetail.tutor.currentJob}} <br>
-        <button class="button icon-left ion-edit" ng-click="editPost()">Sửa Bài Đăng</button>
-        <button class="button icon-left ion-android-delete" ng-click="deletePost()">Xóa Bài Đăng </button>
-      </div>
+        <a class="item item-icon-left">
+          <i class="icon ion-university"></i> {{postDetail.subject}}
+        </a>
+        <a class="item item-icon-left">
+          <i class="icon ion-calendar"></i> {{postDetail.times}}
+        </a>
+        <a class="item item-icon-left">
+          <i class="icon ion-clock"></i> {{postDetail.timePost}}
+        </a>
+        <a class="item item-icon-left">
+          <i class="icon ion-card"></i> {{postDetail.salaryDesired}}
+        </a>
+        <a class="item item-icon-left">
+          <i class="icon ion-information-circled"></i> {{postDetail.about}}
+        </a>
+        <a class="item item-icon-left">
+          <i class="icon ion-ios-book"></i> {{postDetail.classLevel}}
+        </a>
+        <a class="item item-icon-left">
+          <i class="icon ion-ios-location"></i> {{postDetail.locationDesired}}
+        </a>
 
-    </div>
+      </div>
+    </a>
 
   </ion-content>
 </ion-view>

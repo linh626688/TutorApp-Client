@@ -1,8 +1,10 @@
 <script src="login-controller.js"></script>
-<ion-view view-title="Đăng Nhập">
+<ion-view view-title="Đăng Nhập" id="welcome-view">
   <ion-content>
-    <div>
-      <form ng-submit="loginUser()">
+    <div  class="logo-welcome"></div>
+    <div class="login-btns">
+      <hr id="login-divider" />
+      <form ng-submit="loginUser()" ng-if="!user">
         <br>
         <div class="list">
           <label class="item item-input">
@@ -18,28 +20,12 @@
           </label>
         </div>
       </form>
-      <label class="item">
-        <button class="button button-block button-positive" ng-click="loginfb()">
-          Login with Facebook
-        </button>
-      </label>
+      <div id="social-links">
+        <ul>
+          <li ng-click="fbLogin()"><span class="ifacebook"><img src="img/social-icons/facebook.png"></span><a href="#" class="afacebook">sign in with facebook</a></li>
+          <li ng-click="toRegister()"><span></span><a href="#" class="afacebook">Register</a></li>
+        </ul>
+      </div>
     </div>
-
-    <label class="item">
-      <button class="button button-block button-positive" ng-click="showLogOutMenu()">
-        Logout FB
-      </button>
-    </label>
-    <label class="item">
-      <button class="button button-block button-positive" ng-click="toRegister()">
-        Register
-      </button>
-    </label>
-    <label class="item" ng-show="localStorage.user!=null">
-      <button class="button button-block button-positive" ng-click="logOutUser()">
-        Đăng Xuất Tài Khoản
-      </button>
-    </label>
-
   </ion-content>
 </ion-view>

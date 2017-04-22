@@ -8,20 +8,37 @@
     </div>
     <ion-list class="animate-ripple">
       <ion-item ng-repeat="post in postTutors |  orderBy:'-id'">
-        <a class="item item-thumbnail-left" href="#/app/tutor-posts/{{post.id}}">
-          <img src=" {{post.imagePost}}">
-          {{post.id}} <br>
-          {{post.subject}} <br>
-          {{post.times}} <br>
-          {{post.timePost}} <br>
-          {{post.salaryDesired}} <br>
-          {{post.locationDesired}} <br>
-          {{post.about}} <br>
-          {{post.classLevel}} <br>
-          {{post.locationDesired}} <br>
-          {{post.tutor.name}} <br>
-          {{post.tutor.birth}} <br>
-          {{post.tutor.currentJob}} <br>
+        <a class="list card stable-bg" href="#/app/tutor-posts/{{post.id}}">
+          <div class="item item-avatar">
+            <img src="{{post.imagePost}}">
+            <h2>{{post.tutor.name}}<br></h2>
+            <h2>{{post.tutor.birth}}</h2>
+            <h2>{{post.tutor.currentJob}}</h2>
+          </div>
+          <div class="item item-body">
+            <a class="item item-icon-left">
+              <i class="icon ion-university"></i> {{post.subject}}
+            </a>
+            <a class="item item-icon-left">
+              <i class="icon ion-university"></i> {{post.times}}
+            </a>
+            <a class="item item-icon-left">
+              <i class="icon ion-clock"></i> {{post.timePost}}
+            </a>
+            <a class="item item-icon-left">
+              <i class="icon ion-card"></i> {{post.salaryDesired}}
+            </a>
+            <a class="item item-icon-left">
+              <i class="icon ion-information-circled"></i> {{post.about}}
+            </a>
+            <a class="item item-icon-left">
+              <i class="icon ion-ios-book"></i> {{post.classLevel}}
+            </a>
+            <a class="item item-icon-left">
+              <i class="icon ion-ios-location"></i> {{post.locationDesired}}
+            </a>
+
+          </div>
         </a>
       </ion-item>
     </ion-list>

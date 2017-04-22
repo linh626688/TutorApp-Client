@@ -1,9 +1,10 @@
 angular.module('app')
-  .controller('OauthCtrl', function ($scope, $state, $q, $timeout, $ionicPopup, $ionicHistory, UserService, $ionicLoading, $ionicActionSheet, OauthService, ionicMaterialInk, $localStorage) {
+  .controller('OauthCtrl', function ($scope, $state, $q, $timeout, $window, $ionicPopup, $ionicHistory, UserService, $ionicLoading, $ionicActionSheet, OauthService, ionicMaterialInk, $localStorage) {
     $scope.loginData = [];
     $scope.User = [];
 
     console.log($localStorage.user);
+    $scope.user = $localStorage.user;
     // This is the success callback from the login method
     var fbLoginSuccess = function (response) {
       if (!response.authResponse) {
@@ -193,8 +194,17 @@ angular.module('app')
             $window.localStorage.clear();
             $ionicHistory.clearCache();
             $ionicHistory.clearHistory();
+          }, function (error) {
+            console.log(error);
+            $state.go('app.tutor-posts');
+            $window.localStorage.clear();
+            $ionicHistory.clearCache();
+            $ionicHistory.clearHistory();
           }
         )
+    };
+    $scope.reloadPage = function () {
+      $window.location.reload(true)
     }
   });
 
