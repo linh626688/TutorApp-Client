@@ -1,7 +1,11 @@
 <ion-view view-title="Danh sách các lớp cần Gia Sư">
   <ion-content>
-    <ion-list>
-      <ion-item ng-repeat="post in postParents"  href="#app/parent-posts/{{post.id}}" >
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
+    <ion-list class="animate-ripple">
+      <ion-item ng-repeat="post in postParents |  orderBy:'-id'"  href="#app/parent-posts/{{post.id}}" >
         <div class="list card stable-bg">
           <div class="item item-body">
             <a class="item item-icon-left">

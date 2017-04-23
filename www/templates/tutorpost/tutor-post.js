@@ -8,7 +8,6 @@ angular.module('app')
       .success(function (response) {
         $scope.postDetail = response;
         console.log(response);
-
       });
     console.log($stateParams.postId);
     //TODO

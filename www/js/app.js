@@ -7,7 +7,7 @@
 
 angular.module('app.controllers', []);
 angular.module('app.config', []);
-var app = angular.module('app', ['ionic', 'app.controllers', 'app.run', 'app.config', 'ionic-material','ngCordova','ngStorage'])
+var app = angular.module('app', ['ionic', 'app.controllers', 'app.run', 'app.config', 'ionic-material', 'ngCordova', 'ngStorage'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -32,7 +32,8 @@ angular.module('app.config')
       .state('app', {
         url: '/app',
         abstract: true,
-        templateUrl: 'templates/menu.html'
+        templateUrl: 'templates/menu.html',
+        controller: 'AppCtrl'
       })
       .state('app.search', {
         url: '/search',
@@ -180,7 +181,7 @@ angular.module('app.config')
         views: {
           'menuContent': {
             templateUrl: 'templates/tutorpost/create-post/update-tutor-post.html',
-            controller :'updateTutorPost'
+            controller: 'updateTutorPost'
           }
         }
       })
@@ -189,7 +190,7 @@ angular.module('app.config')
         views: {
           'menuContent': {
             templateUrl: 'templates/parentpost/create-post/update-parent-post.html',
-            controller :'updateParentPost'
+            controller: 'updateParentPost'
           }
         }
       })
@@ -213,5 +214,31 @@ angular.module('app.config')
       });
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/tutor-posts');
-  });
+  })
+  .controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover,$window) {
+
+    var template = '<ion-popover-view>' +
+      '   <ion-header-bar>' +
+      '       <h1 class="title">Options</h1>' +
+      '   </ion-header-bar>' +
+      '   <ion-content class="padding">' +
+      '       <a class="item button-balanced" ng-click="reloadPage()"> refresh </a>' +
+      '   </ion-content>' +
+      '</ion-popover-view>';
+
+    $scope.popover = $ionicPopover.fromTemplate(template, {
+      scope: $scope
+    });
+    $scope.closePopover = function () {
+      $scope.popover.hide();
+    };
+    $scope.reloadPage = function () {
+      $window.location.reload(true);
+    };
+    //Cleanup the popover when we're done with it!
+    $scope.$on('$destroy', function () {
+      $scope.popover.remove();
+    });
+  })
+;
 
