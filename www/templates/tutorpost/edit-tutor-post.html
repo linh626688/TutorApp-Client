@@ -1,35 +1,32 @@
-<script src="update-tutor-post.js"></script>
-<ion-view view-title="Cập Nhật Chi Tiết Gia Sư">
+<ion-view view-title="Sửa Bài Đăng">
   <ion-content>
     <div class="list">
       <label class="item item-input item-stacked-label">
         <span class="input-label">Nhận Môn</span>
-        <input type="text" placeholder="Môn Học Nhận dậy (Toán , Vắn, ...)" ng-model="postDetail.subject">
+        <input type="text" value="{{postDetail.subject}}" ng-model="edit.subject">
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Cấp độ</span>
-        <input type="text" placeholder="Trình độ học sinh" ng-model="postDetail.classLevel">
+        <input type="text" placeholder="{{postDetail.classLevel}}" ng-model="edit.classLevel">
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Lương yêu cầu </span>
-        <input type="text" placeholder="Lương Mong Muốn" ng-model="postDetail.salaryDesired">
+        <input type="text" placeholder="{{postDetail.salaryDesired}}" ng-model="edit.salaryDesired">
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Thời gian</span>
-        <input type="text" placeholder="Thời gian lên lớp (Thứ 2 / 18h-20h)" ng-model="postDetail.times">
+        <input type="text" placeholder="{{postDetail.times}}" ng-model="edit.times">
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Khu vực Giảng dậy</span>
-        <input type="text" placeholder="Khu Vực Nhận Lớp " ng-model="postDetail.locationDesired">
+        <input type="text" placeholder="{{postDetail.locationDesired}}" ng-model="edit.locationDesired">
       </label>
       <label class="item item-input item-stacked-label">
         <span class="input-label">Chú thích</span>
-        <input type="text" placeholder="Thông tin thêm" ng-model="postDetail.about">
+        <input type="text" placeholder="{{postDetail.about}}" ng-model="edit.about">
       </label>
       <label class="item item-input item-stacked-label">
-        <button class="button" ng-click="createPostTutor()"> Submit </button>
+        <button class="button" ng-click="editPostTutor()"> Submit </button>
       </label>
-    </div>
-
   </ion-content>
 </ion-view>

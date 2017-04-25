@@ -22,6 +22,7 @@ angular.module('app')
           function (response) {
             $scope.newPost = response.data;
             console.log($scope.newPost.id);
+            console.log(request);
             $state.go('app.tutor-post-image', {"postId": $scope.newPost.id})
           },
           function (error, data) {
@@ -144,9 +145,9 @@ angular.module('app')
     tutorPostService.getPostTutor($stateParams.postId)
       .success(function (response) {
         $scope.postDetail = response;
-      })
+      });
     $scope.deletePost = function () {
-      tutorPostService.deletePostTutor($scope.tokenTutor, $scope.postDetail.id)
+      tutorPostService.deletePostTutor($scope.tokenTutor, $scope.postDetail.id);
       window.alert("Hủy Bài Đăng");
       $state.go('app.tutor-posts')
     }

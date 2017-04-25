@@ -152,10 +152,10 @@ angular.module('app')
             $scope.showPopup();
             $localStorage.user = response;
             console.log("$localStorage", $localStorage.user);
-            if ($localStorage.user.data.tutor != null) {
-              $state.go('app.tutor-detail')
+            if ($localStorage.user.data.tutor = null) {
+              $state.go('app.tutor-detail', {reload: true})
             } else {
-              $state.go('app.parent-detail')
+              $state.go('app.tutor-posts', {reload: true})
             }
 
           }

@@ -8,7 +8,7 @@
 angular.module('app.controllers', []);
 angular.module('app.config', []);
 var app = angular.module('app', ['ionic', 'app.controllers', 'app.run', 'app.config', 'ionic-material', 'ngCordova', 'ngStorage', 'uiGmapgoogle-maps'])
-  .config(function(uiGmapGoogleMapApiProvider) {
+  .config(function (uiGmapGoogleMapApiProvider) {
     uiGmapGoogleMapApiProvider.configure({
       key: 'AIzaSyAeVbvt3vr5Ow3u_souFU44APqH067A2ck',
       v: '3.20', //defaults to latest 3.X anyhow
@@ -129,6 +129,15 @@ angular.module('app.config')
           }
         }
       })
+      .state('app.edit-tutor-post', {
+        url: '/edit-tutor-posts/:postId',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/tutorpost/edit-tutor-post.html',
+            controller: 'EditTutorPostCtrl'
+          }
+        }
+      })
       .state('app.tutor-post-image', {
         url: '/tutor-post-image/:postId',
         views: {
@@ -220,14 +229,16 @@ angular.module('app.config')
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/tutor-posts');
   })
-  .controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $window) {
-
+  .controller('AppCtrl', function ($scope, $state, $ionicHistory, $window, $ionicModal, $ionicPopover, $window, OauthService, $localStorage) {
+    $scope.user = $localStorage.user;
     var template = '<ion-popover-view>' +
       '   <ion-header-bar>' +
       '       <h1 class="title">Options</h1>' +
       '   </ion-header-bar>' +
       '   <ion-content class="padding">' +
-      '       <a class="item button-balanced" ng-click="reloadPage()"> refresh </a>' +
+      '       <a class="item button-balanced" ng-click="homePage()"> Trang Chủ </a>' +
+      '       <a class="item button-balanced" ng-click="reloadPage()"> Refresh  </a>' +
+      '       <a class="item button-balanced" ng-click="logOutUser()" ng-if ="user"> Đăng Xuất </a>' +
       '   </ion-content>' +
       '</ion-popover-view>';
 
@@ -239,6 +250,26 @@ angular.module('app.config')
     };
     $scope.reloadPage = function () {
       $window.location.reload(true);
+    };
+    $scope.homePage = function () {
+      $state.go('app.tutor-posts', {}, {reload: true});
+    };
+    $scope.logOutUser = function () {
+      OauthService.userLogout($localStorage.user.data.token)
+        .then(
+          function () {
+            $state.go('app.tutor-posts');
+            $window.localStorage.clear();
+            $ionicHistory.clearCache();
+            $ionicHistory.clearHistory();
+          }, function (error) {
+            console.log(error);
+            $state.go('app.tutor-posts');
+            $window.localStorage.clear();
+            $ionicHistory.clearCache();
+            $ionicHistory.clearHistory();
+          }
+        )
     };
     //Cleanup the popover when we're done with it!
     $scope.$on('$destroy', function () {

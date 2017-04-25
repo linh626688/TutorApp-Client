@@ -17,12 +17,14 @@ angular.module('app')
         }
       );
     }
+
     function getPostTutor(postId) {
       return $http({
-          url: 'http://35.185.156.51:8080/postTutor/' + postId,
-          method: 'GET'
-        });
+        url: 'http://35.185.156.51:8080/postTutor/' + postId,
+        method: 'GET'
+      });
     }
+
     function createPostTutor(opts, token) {
       return $http({
         url: 'http://35.185.156.51:8080/createPostTutor/',
@@ -34,6 +36,7 @@ angular.module('app')
         }
       });
     }
+
     function deletePostTutor(token, postId) {
       return $http({
         url: 'http://35.185.156.51:8080/deletePostTutor/' + postId,
@@ -44,10 +47,12 @@ angular.module('app')
         }
       });
     }
-    function editPostTutor(token, postId) {
+
+    function editPostTutor(opts, token, postId) {
       return $http({
         url: 'http://35.185.156.51:8080/editPostTutor/' + postId,
         method: 'PUT',
+        data: opts,
         headers: {
           'auth-token': token,
           'Content-Type': 'application/json'
