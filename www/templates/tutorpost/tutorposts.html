@@ -9,32 +9,32 @@
         <a class="list card stable-bg" href="#/app/tutor-posts/{{post.id}}">
           <div class="item item-avatar">
             <img src="{{post.imagePost}}">
-            <h2>{{post.tutor.name}}<br></h2>
-            <h2>{{post.tutor.birth}}</h2>
-            <h2>{{post.tutor.currentJob}}</h2>
+            <h2> Họ tên : {{post.tutor.name}}<br></h2>
+            <h2> Ngày Sinh : {{post.tutor.birth}}</h2>
+            <h2> Công Việc hiện tại : {{post.tutor.currentJob}}</h2>
           </div>
           <div class="item item-body">
             <a class="item item-icon-left">
-              <i class="icon ion-university"></i> {{post.subject}}
+              <i class="icon ion-university"></i>Môn Học : {{post.subject}}
             </a>
             <a class="item item-icon-left">
-              <i class="icon ion-university"></i> {{post.times}}
+              <i class="icon ion-clock"></i>Thời Gian : {{post.times}}
             </a>
             <a class="item item-icon-left">
-              <i class="icon ion-clock"></i> {{post.timePost}}
+              <i class="icon ion-ios-cloud-upload"></i> Thời điểm đăng bài : {{post.timePost}}
             </a>
             <a class="item item-icon-left">
-              <i class="icon ion-card"></i> {{post.salaryDesired}}
+              <i class="icon ion-card"></i> Lương mong muốn : {{post.salaryDesired}}
             </a>
             <a class="item item-icon-left">
-              <i class="icon ion-information-circled"></i> {{post.about}}
+              <i class="icon ion-ios-book"></i> Trình độ lớp : {{post.classLevel}}
             </a>
             <a class="item item-icon-left">
-              <i class="icon ion-ios-book"></i> {{post.classLevel}}
+              <i class="icon ion-ios-location"></i> Vị trí giảng dậy : {{post.locationDesired}}
             </a>
-            <a class="item item-icon-left">
-              <i class="icon ion-ios-location"></i> {{post.locationDesired}}
-            </a>
+            <h2 class="item item-icon-left">
+              <i class="icon ion-information-circled"></i> Thông tin thêm : {{post.about}}
+            </h2>
           </div>
         </a>
       </ion-item>

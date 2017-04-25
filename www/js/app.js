@@ -7,8 +7,14 @@
 
 angular.module('app.controllers', []);
 angular.module('app.config', []);
-var app = angular.module('app', ['ionic', 'app.controllers', 'app.run', 'app.config', 'ionic-material', 'ngCordova', 'ngStorage'])
-
+var app = angular.module('app', ['ionic', 'app.controllers', 'app.run', 'app.config', 'ionic-material', 'ngCordova', 'ngStorage', 'uiGmapgoogle-maps'])
+  .config(function(uiGmapGoogleMapApiProvider) {
+    uiGmapGoogleMapApiProvider.configure({
+      key: 'AIzaSyAeVbvt3vr5Ow3u_souFU44APqH067A2ck',
+      v: '3.20', //defaults to latest 3.X anyhow
+      libraries: 'weather,geometry,visualization'
+    });
+  })
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
@@ -28,7 +34,6 @@ var app = angular.module('app', ['ionic', 'app.controllers', 'app.run', 'app.con
 angular.module('app.config')
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
-
       .state('app', {
         url: '/app',
         abstract: true,
@@ -215,7 +220,7 @@ angular.module('app.config')
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/app/tutor-posts');
   })
-  .controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover,$window) {
+  .controller('AppCtrl', function ($scope, $ionicModal, $ionicPopover, $window) {
 
     var template = '<ion-popover-view>' +
       '   <ion-header-bar>' +
