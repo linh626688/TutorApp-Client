@@ -5,7 +5,10 @@ angular.module('app')
   .controller('TutorPostCtrl', function ($scope, $state, $stateParams, tutorPostService, $localStorage) {
     $scope.postDetail = [];
     $scope.user = $localStorage.user;
-    $scope.tokenTutor = $localStorage.user.data.token;
+    if ($scope.user != null) {
+      $scope.tokenTutor = $localStorage.user.data.token;
+    }
+
     tutorPostService.getPostTutor($stateParams.postId)
       .success(function (response) {
         $scope.postDetail = response;

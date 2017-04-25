@@ -138,6 +138,15 @@ angular.module('app.config')
           }
         }
       })
+      .state('app.edit-parent-post', {
+        url: '/edit-parent-posts/:postId',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/parentpost/edit-parent-post.html',
+            controller: 'EditParentPostCtrl'
+          }
+        }
+      })
       .state('app.tutor-post-image', {
         url: '/tutor-post-image/:postId',
         views: {

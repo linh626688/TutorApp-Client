@@ -30,7 +30,7 @@
       </div>
     </div>
 
-    <button class="button" ng-click="updatePostParent()"> Sửa thông tin lớp </button>
-    <button class="button" ng-click="deletePostParent()"> Xóa lớp học này  </button>
+    <button class="button" ng-click="updatePostParent()" ng-if="user" > Sửa thông tin lớp </button>
+    <button class="button" ng-click="deletePostParent()" ng-if="user" > Xóa lớp học này  </button>
   </ion-content>
 </ion-view>
