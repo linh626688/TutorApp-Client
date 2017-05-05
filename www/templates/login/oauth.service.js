@@ -14,7 +14,7 @@ angular.module('app')
     };
     function registerUser(dataUser) {
       return $http({
-        url: 'http://35.185.156.51:8080/signup',
+        url: 'http://35.187.156.70:8080/signup',
         method: 'POST',
         data: dataUser,
         headers: {
@@ -25,7 +25,7 @@ angular.module('app')
 
     function userLogin(input) {
       return $http({
-        url: 'http://35.185.156.51:8080/login',
+        url: 'http://35.187.156.70:8080/login',
         method: 'POST',
         data: input,
         headers: {
@@ -36,7 +36,7 @@ angular.module('app')
 
     function userLogout(token) {
       return $http({
-        url: 'http://35.185.156.51:8080/logout',
+        url: 'http://35.187.156.70:8080/logout',
         method: 'POST',
         headers: {
           'auth-token': token,
@@ -52,7 +52,7 @@ angular.module('app')
 
     function updateParent(token, data, parentId) {
       return $http({
-        url: 'http://35.185.156.51:8080/updateParent/' + parentId,
+        url: 'http://35.187.156.70:8080/updateParent/' + parentId,
         method: 'PUT',
         data: data,
         headers: {
@@ -64,7 +64,7 @@ angular.module('app')
 
     function updateTutor(token, data, tutorId) {
       return $http({
-        url: 'http://35.185.156.51:8080/updateTutor/' + tutorId,
+        url: 'http://35.187.156.70:8080/updateTutor/' + tutorId,
         method: 'PUT',
         data: data,
         headers: {

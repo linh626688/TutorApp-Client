@@ -5,7 +5,10 @@
         <ui-gmap-marker idkey="marker.id" coords="marker.coords" options="marker.options">
           <marker animation="DROP" position="current-location"></marker>
         </ui-gmap-marker>
-      </ui-gmap-google-map>
+        <ui-gmap-marker>
+          <markers models="vehicles" coords="'last_known_location'"></markers>
+        </ui-gmap-marker>
+
       <div class="list">
         <label class="item item-input item-stacked-label">
           <span class="input-label">Điền Vị Trí</span>

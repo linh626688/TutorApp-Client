@@ -110,7 +110,7 @@ angular.module('app')
     };
     $scope.uploadImage = function () {
       // Destination URL
-      var url = "http://35.185.156.51:8080/postByTutor/update-image-post";
+      var url = "http://35.187.156.70:8080/postByTutor/update-image-post";
       // File for Upload
       var targetPath = $scope.pathForImage($scope.image);
       // File name only

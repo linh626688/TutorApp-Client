@@ -6,7 +6,7 @@ angular.module('app')
     $scope.page = 0;
     $scope.tutors = [];
     $scope.getAllTutor = function () {
-      $http.get('http://35.185.156.51:8080/getAllTutor')
+      $http.get('http://35.187.156.70:8080/getAllTutor')
         .success(function (response) {
           $scope.tutors = response;
           console.log(response)

@@ -44,8 +44,9 @@ angular.module('app')
     };
     $scope.markers = [];
     // get position of user and then set the center of the map to that position
+    var posOptions = {timeout: 10000, enableHighAccuracy: false};
     $cordovaGeolocation
-      .getCurrentPosition()
+      .getCurrentPosition(posOptions)
       .then(function (position) {
         var lat = position.coords.latitude;
         var long = position.coords.longitude;
@@ -56,7 +57,7 @@ angular.module('app')
             latitude: position.coords.latitude,
             longitude: position.coords.longitude
           },
-          options: {draggable: true},
+          options: {draggable: false},
 
           events: {
             dragend: function (marker, eventName, args) {
@@ -72,6 +73,14 @@ angular.module('app')
             }
           }
         };
+        $scope.vehicles = [{
+          id: "first",
+          stuff: "stuff",
+          last_known_location: {
+            latitude: 21.074413,
+            longitude: 105.772487
+          }
+        }];
       });
 
     var posOptions = {timeout: 10000, enableHighAccuracy: false};
@@ -82,38 +91,19 @@ angular.module('app')
         $scope.coor.lat = parseFloat(position.coords.latitude);
         $scope.long = position.coords.longitude;
         $scope.coor.lng = parseFloat(position.coords.longitude);
+        window.alert($scope.lat + ' ' + $scope.lat);
         console.log(typeof $scope.coor);
-        google.maps.event.addDomListener(window, 'load', function () {
-          var myLatlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-          var mapOptions = {
-            center: myLatlng,
-            zoom: 16,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-          };
-
-          var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-          navigator.geolocation.getCurrentPosition(function (pos) {
-            map.setCenter(new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude));
-            var myLocation = new google.maps.Marker({
-              position: new google.maps.LatLng(pos.coords.latitude, pos.coords.longitude),
-              map: map,
-              title: "My Location"
-            });
-          });
-
-          $scope.map = map;
-        });
       }, function (err) {
         // error
       });
+
     $scope.searchCurrentLocation = function () {
       SearchParentService.searchTutorWithCurrentLocation($scope.coor, $scope.input.distance)
         .then(
           function (response) {
             $scope.resultPosts = response;
-            console.log(response);
+            console.log($scope.coor);
+
             MotionService.ripple();
           },
           function (error, data) {

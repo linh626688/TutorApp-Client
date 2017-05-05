@@ -1,9 +1,9 @@
 <script src="login-controller.js"></script>
 <ion-view view-title="Đăng Nhập" id="welcome-view">
   <ion-content>
-    <div  class="logo-welcome"></div>
+    <div class="logo-welcome"></div>
     <div class="login-btns">
-      <hr id="login-divider" />
+      <hr id="login-divider"/>
       <form ng-submit="loginUser()" ng-if="!user">
         <br>
         <div class="list">
@@ -17,13 +17,13 @@
           </label>
           <label class="item">
             <button class="button button-block button-positive" type="submit">Log in</button>
+            <button class="button button-block button-positive" type="submit" ng-click="toRegister()">Sign in</button>
           </label>
         </div>
       </form>
       <div id="social-links">
         <ul>
-          <li ng-click="fbLogin()"><span class="ifacebook"><img src="img/social-icons/facebook.png"></span><a href="#" class="afacebook">sign in with facebook</a></li>
-          <li ng-click="toRegister()"><span></span><a href="#" class="afacebook">Register</a></li>
+          <li ng-click="loginfb()"><span class="ifacebook"><img src="img/social-icons/facebook.png"></span><a class="afacebook">sign in with facebook</a></li>
         </ul>
       </div>
     </div>

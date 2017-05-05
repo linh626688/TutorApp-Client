@@ -15,7 +15,7 @@ angular.module('app')
 
       function getAllPostParent() {
         return $http({
-            url: 'http://35.185.156.51:8080/allPostParent',
+            url: 'http://35.187.156.70:8080/allPostParent',
             method: 'GET'
           }
         );
@@ -23,7 +23,7 @@ angular.module('app')
 
       function getPostParent(postId) {
         return $http({
-            url: 'http://35.185.156.51:8080/postParent/' + postId,
+            url: 'http://35.187.156.70:8080/postParent/' + postId,
             method: 'GET'
           }
         );
@@ -31,7 +31,7 @@ angular.module('app')
 
       function allPostByParent(parentId) {
         return $http({
-            url: 'http://35.185.156.51:8080/allPostParent/' + parentId,
+            url: 'http://35.187.156.70:8080/allPostParent/' + parentId,
             method: 'GET'
           }
         );
@@ -39,7 +39,7 @@ angular.module('app')
 
       function deletePostParent(token, postId) {
         return $http({
-          url: 'http://35.185.156.51:8080/deletePostParent/' + postId,
+          url: 'http://35.187.156.70:8080/deletePostParent/' + postId,
           method: 'DELETE',
           headers: {
             'auth-token': token,
@@ -50,7 +50,7 @@ angular.module('app')
 
       function editPostParent(token, data, postId) {
         return $http({
-          url: 'http://35.185.156.51:8080/editPostParent/' + postId,
+          url: 'http://35.187.156.70:8080/editPostParent/' + postId,
           method: 'PUT',
           data: data,
           headers: {
@@ -62,7 +62,7 @@ angular.module('app')
 
       function createPostParent(token, data) {
         return $http({
-          url: 'http://35.185.156.51:8080/createPostParent/',
+          url: 'http://35.187.156.70:8080/createPostParent/',
           method: 'POST',
           data: data,
           headers: {

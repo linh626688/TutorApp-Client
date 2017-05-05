@@ -57,17 +57,10 @@ angular.module('app')
 
     //This method is executed when the user press the "Login with facebook" button
     $scope.loginfb = function () {
-      console.log('Click xxxx ');
       facebookConnectPlugin.getLoginStatus(function (success) {
         if (success.status === 'connected') {
-          // The user is logged in and has authenticated your app, and response.authResponse supplies
-          // the user's ID, a valid access token, a signed request, and the time the access token
-          // and signed request each expire
           console.log('getLoginStatus', success.status);
-
-          // Check if we have our user saved
           var user = UserService.getUser('facebook');
-
           if (!user.userID) {
             getFacebookProfileInfo(success.authResponse)
               .then(function (profileInfo) {
@@ -80,22 +73,15 @@ angular.module('app')
                   picture: "http://graph.facebook.com/" + success.authResponse.userID + "/picture?type=large"
                 });
 
-                $state.go('app.home');
+                $state.go('app.tutor-posts');
               }, function (fail) {
-                // Fail get profile info
                 console.log('profile info fail', fail);
               });
           } else {
-            $state.go('app.home');
+            $state.go('app.tutor-posts');
           }
         } else {
-          // If (success.status === 'not_authorized') the user is logged in to Facebook,
-          // but has not authenticated your app
-          // Else the person is not logged into Facebook,
-          // so we're not sure if they are logged into this app or not.
-
           console.log('getLoginStatus', success.status);
-
           $ionicLoading.show({
             template: 'Logging in...'
           });

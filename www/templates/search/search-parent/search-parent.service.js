@@ -9,7 +9,7 @@ angular.module('app')
     };
     function searchTutorWithDistance(locaion, distance) {
       return $http({
-        url: 'http://35.185.156.51:8080/parent/findTutorNoLatLong?distance=' + distance,
+        url: 'http://35.187.156.70:8080/parent/findTutorNoLatLong?distance=' + distance,
         method: 'POST',
         data: locaion,
         headers: {
@@ -20,7 +20,7 @@ angular.module('app')
 
     function searchTutorWithCurrentLocation(location, distance) {
       return $http({
-        url: 'http://35.185.156.51:8080/parent/findTutor?distance=' + distance,
+        url: 'http://35.187.156.70:8080/parent/findTutor?distance=' + distance,
         method: 'POST',
         data: location,
         headers: {

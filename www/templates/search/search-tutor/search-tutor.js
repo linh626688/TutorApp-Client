@@ -70,7 +70,7 @@ angular.module('app')
             latitude: position.coords.latitude,
             longitude: position.coords.longitude
           },
-          options: {draggable: true},
+          options: {draggable: false},
 
           events: {
             dragend: function (marker, eventName, args) {

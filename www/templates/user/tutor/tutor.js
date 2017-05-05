@@ -6,7 +6,7 @@ angular.module('app')
     console.log($stateParams.tutorId);
     $scope.tutor = [];
     $scope.getTutorDetail = function () {
-      $http.get('http://35.185.156.51:8080/getTutor/' + $stateParams.tutorId)
+      $http.get('http://35.187.156.70:8080/getTutor/' + $stateParams.tutorId)
         .success(function (response) {
           $scope.tutor = response;
           console.log(response)
