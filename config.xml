@@ -45,5 +45,6 @@
     <splash src="resources/android/splash/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
   </platform>
   <allow-navigation href="http://192.168.0.115:8100"/>
+  <allow-navigation href="http://192.168.0.115:8101"/>
   <allow-intent href="https://maps.googleapis.com"/>
 </widget>

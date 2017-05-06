@@ -4,7 +4,7 @@
     <div class="logo-welcome"></div>
     <div class="login-btns">
       <hr id="login-divider"/>
-      <form ng-submit="loginUser()" ng-if="!user">
+      <div  ng-if="!user">
         <br>
         <div class="list">
           <label class="item item-input">
@@ -16,11 +16,13 @@
             <input type="password" ng-model="loginData.password">
           </label>
           <label class="item">
-            <button class="button button-block button-positive" type="submit">Log in</button>
-            <button class="button button-block button-positive" type="submit" ng-click="toRegister()">Sign in</button>
+            <button class="button button-block button-positive" ng-click="loginUser()">Log in</button>
+          </label>
+          <label class="item">
+            <button class="button button-block button-positive" ng-click="toRegister()">Sign in</button>
           </label>
         </div>
-      </form>
+      </div>
       <div id="social-links">
         <ul>
           <li ng-click="loginfb()"><span class="ifacebook"><img src="img/social-icons/facebook.png"></span><a class="afacebook">sign in with facebook</a></li>

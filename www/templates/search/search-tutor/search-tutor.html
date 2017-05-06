@@ -5,6 +5,7 @@
         <ui-gmap-marker idkey="marker.id" coords="marker.coords" options="marker.options">
           <marker animation="DROP" position="current-location"></marker>
         </ui-gmap-marker>
+        <ui-gmap-marker ng-repeat="m in map.markers" coords="m.coords" options ="m.options" idkey="m.id"></ui-gmap-marker>
       </ui-gmap-google-map>
       <div class="list">
         <label class="item item-input item-stacked-label">

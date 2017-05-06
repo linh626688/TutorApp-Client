@@ -2,9 +2,48 @@
  * Created by DangThanhLinh on 01/04/2017.
  */
 angular.module('app')
-  .controller('SearchParentCtrl', function ($scope, SearchParentService, $cordovaGeolocation, MotionService) {
+  .controller('SearchParentCtrl', function ($scope, SearchParentService, tutorPostService, $cordovaGeolocation, MotionService) {
     $scope.resultPosts = [];
     $scope.input = [];
+    var allPostTutorGPS = [];
+    var listResponse = [];
+    var listMarker = [];
+
+    tutorPostService.getAllPostTutors()
+      .then(function (response) {
+        listResponse = response.data;
+        console.log(listResponse);
+        $scope.adddata();
+      });
+
+    $scope.adddata = function () {
+
+      for (var i = 0; i < listResponse.length; i++) {
+        allPostTutorGPS.push({
+          id : listResponse[i].id,
+          lat: listResponse[i].lat,
+          lng: listResponse[i].lng
+        });
+      }
+      console.log(allPostTutorGPS);
+      for (var j = 0; j < allPostTutorGPS.length; j++) {
+        var markerTutor = {
+          id: allPostTutorGPS[j].id,
+          coords: {
+            latitude: allPostTutorGPS[j].lat,
+            longitude: allPostTutorGPS[j].lng
+          },
+          options: {
+            draggable: false,
+            icon: 'img/teacher_male.png'
+          }
+        };
+        listMarker.push(markerTutor);
+      }
+      console.log(listMarker);
+    };
+
+
     $scope.input.distance = 10000;
     $scope.coor = {
       lat: '',
@@ -32,17 +71,14 @@ angular.module('app')
             console.log("resquest error")
           })
     };
+
     $scope.map = {
-      center: {
-        latitude: 21.0330205,
-        longitude: 105.8049613
-      },
       zoom: 14,
-      options: {
-        scrollwheel: false
-      }
+      bounds: {},
+      center: {latitude: 21.0330205, longitude: 105.8049613},
+      markers: listMarker
     };
-    $scope.markers = [];
+
     // get position of user and then set the center of the map to that position
     var posOptions = {timeout: 10000, enableHighAccuracy: false};
     $cordovaGeolocation
@@ -73,14 +109,6 @@ angular.module('app')
             }
           }
         };
-        $scope.vehicles = [{
-          id: "first",
-          stuff: "stuff",
-          last_known_location: {
-            latitude: 21.074413,
-            longitude: 105.772487
-          }
-        }];
       });
 
     var posOptions = {timeout: 10000, enableHighAccuracy: false};
@@ -91,8 +119,7 @@ angular.module('app')
         $scope.coor.lat = parseFloat(position.coords.latitude);
         $scope.long = position.coords.longitude;
         $scope.coor.lng = parseFloat(position.coords.longitude);
-        window.alert($scope.lat + ' ' + $scope.lat);
-        console.log(typeof $scope.coor);
+        console.log($scope.lat + ' ' + $scope.long);
       }, function (err) {
         // error
       });
@@ -103,7 +130,6 @@ angular.module('app')
           function (response) {
             $scope.resultPosts = response;
             console.log($scope.coor);
-
             MotionService.ripple();
           },
           function (error, data) {

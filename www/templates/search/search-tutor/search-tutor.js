@@ -2,7 +2,10 @@
  * Created by DangThanhLinh on 01/04/2017.
  */
 angular.module('app')
-  .controller('SearchTutorCtrl', function ($scope, $state, $stateParams, MotionService, $timeout, SearchTutorService, $cordovaGeolocation) {
+  .controller('SearchTutorCtrl', function ($scope, $state, $stateParams, parentPostService, MotionService, $timeout, SearchTutorService, $cordovaGeolocation) {
+    var allPostParentGPS = [];
+    var listResponseParent = [];
+    var listMarkerParent = [];
 
     $scope.resultPosts = [];
     $scope.input = [];
@@ -10,7 +13,40 @@ angular.module('app')
       lat: '',
       lng: ''
     };
-    $scope.map = [];
+
+    parentPostService.getAllPostParents()
+      .then(function (response) {
+        listResponseParent = response.data;
+        console.log(listResponseParent);
+        $scope.adddata();
+      });
+
+    $scope.adddata = function () {
+      for (var i = 0; i < listResponseParent.length; i++) {
+        allPostParentGPS.push({
+          id: listResponseParent[i].id,
+          lat: listResponseParent[i].lat,
+          lng: listResponseParent[i].lng
+        });
+      }
+      console.log(allPostParentGPS);
+      for (var j = 0; j < allPostParentGPS.length; j++) {
+        var markerParent = {
+          id: allPostParentGPS[j].id,
+          coords: {
+            latitude: allPostParentGPS[j].lat,
+            longitude: allPostParentGPS[j].lng
+          },
+          options: {
+            draggable: false,
+            icon: 'img/Classroom-24.png'
+          }
+        };
+        listMarkerParent.push(markerParent);
+      }
+      console.log(listMarkerParent);
+    };
+
 
     $scope.distances = [
       {name: "5KM", value: 5000},
@@ -47,16 +83,11 @@ angular.module('app')
         // error
       });
     $scope.map = {
-      center: {
-        latitude: 21.0330205,
-        longitude: 105.8049613
-      },
       zoom: 14,
-      options: {
-        scrollwheel: false
-      }
+      bounds: {},
+      center: {latitude: 21.0330205, longitude: 105.8049613},
+      markers: listMarkerParent
     };
-    $scope.markers = [];
     // get position of user and then set the center of the map to that position
     $cordovaGeolocation
       .getCurrentPosition()
