@@ -2,7 +2,6 @@ angular.module('app')
   .controller('OauthCtrl', function ($scope, $state, $q, $timeout, $window, $ionicPopup, $ionicHistory, UserService, $ionicLoading, $ionicActionSheet, OauthService, ionicMaterialInk, $localStorage) {
     $scope.loginData = [];
     $scope.User = [];
-
     console.log($localStorage.user);
     $scope.user = $localStorage.user;
     // This is the success callback from the login method
@@ -133,22 +132,35 @@ angular.module('app')
       OauthService.userLogin($scope.input)
         .then(
           function (response) {
-            $scope.User = response;
-            // console.log(response);
+            console.log("response", response);
             $scope.showPopup();
-            $localStorage.user = response;
-            console.log("$localStorage", $localStorage.user);
-            if ($localStorage.user.data.tutor = null) {
-              $state.go('app.tutor-detail', {reload: true})
-            } else {
-              $state.go('app.tutor-posts', {reload: true})
+            $scope.user = response;
+            $scope.saveStorage($scope.user);
+            // $localStorage.user = response.data;
+            // console.log("$localStorage", $localStorage.user);
+            //
+            // if ($localStorage.user.tutor = null) {
+            //   $state.go('app.tutor-detail', {reload: true})
+            // } else {
+            //   $state.go('app.tutor-posts', {reload: true})
+            // }
+            if ($scope.user.data.role == "TUTOR") {
+              $state.go('app.tutor-detail')
+            } else if ($scope.user.data.role == "PARENT") {
+              $state.go('app.parent-detail')
             }
-
+            else {
+              $state.go('app.tutor-posts')
+            }
           }
           , function (error, data) {
             console.log(error + data)
           }
         )
+    };
+    $scope.saveStorage = function (data) {
+      $localStorage.user = data;
+      console.log($localStorage.user);
     };
     $scope.loading = function () {
       $ionicLoading.show({
@@ -191,6 +203,11 @@ angular.module('app')
     };
     $scope.reloadPage = function () {
       $window.location.reload(true)
+    };
+    $scope.doRefresh = function () {
+      $state.go($state.current, {reload: true})
+      // Stop the ion-refresher from spinning
+      $scope.$broadcast('scroll.refreshComplete');
     }
   });
 

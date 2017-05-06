@@ -12,4 +12,6 @@ angular.module('app')
           console.log(response)
         })
     }();
-  });
+  }
+
+  );

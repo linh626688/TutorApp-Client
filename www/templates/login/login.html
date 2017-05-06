@@ -1,6 +1,10 @@
 <script src="login-controller.js"></script>
 <ion-view view-title="Đăng Nhập" id="welcome-view">
   <ion-content>
+    <ion-refresher
+      pulling-text="Pull to refresh..."
+      on-refresh="doRefresh()">
+    </ion-refresher>
     <div class="logo-welcome"></div>
     <div class="login-btns">
       <hr id="login-divider"/>

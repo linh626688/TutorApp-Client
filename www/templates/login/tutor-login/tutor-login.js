@@ -3,12 +3,15 @@
  */
 angular.module('app')
   .controller('TutorUpdateCtrl', function ($scope, $localStorage, OauthService, $state) {
-    $scope.tutorDetail = $localStorage.user;
-    console.log($scope.tutorDetail);
-    var token = $localStorage.user.data.token;
-    var idTutor = $localStorage.user.data.tutor.id;
-    console.log(token);
-    console.log(idTutor);
+     $scope.tutorDetail = $localStorage.user.data;
+    console.log($localStorage.user);
+    if ($scope.tutorDetail.token != null) {
+      var token = $scope.tutorDetail.token;
+      var idTutor = $scope.tutorDetail.tutor.id;
+      console.log(token);
+      console.log(idTutor);
+    }
+
     $scope.input = [];
     $scope.updateTutor = function () {
       var data = {

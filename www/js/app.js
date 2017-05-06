@@ -187,7 +187,9 @@ angular.module('app.config')
         url: '/tutor-update',
         views: {
           'menuContent': {
-            templateUrl: 'templates/login/tutor-login/tutor-login.html'
+            templateUrl: 'templates/login/tutor-login/tutor-login.html',
+            controller: 'TutorUpdateCtrl'
+
           }
         }
       })
@@ -195,7 +197,8 @@ angular.module('app.config')
         url: '/parent-update',
         views: {
           'menuContent': {
-            templateUrl: 'templates/login/parent-login/parent-login.html'
+            templateUrl: 'templates/login/parent-login/parent-login.html',
+            controller: 'ParentUpdateCtrl'
           }
         }
       })
@@ -264,7 +267,7 @@ angular.module('app.config')
       $state.go('app.tutor-posts', {}, {reload: true});
     };
     $scope.logOutUser = function () {
-      OauthService.userLogout($localStorage.user.data.token)
+      OauthService.userLogout($localStorage.user.token)
         .then(
           function () {
             $state.go('app.tutor-posts');

@@ -19,7 +19,7 @@ angular.module('app')
         .then(
           function (response) {
             console.log(response);
-            $state.go('app.parent', {parentId: idParent})
+            $state.go('app.parent-posts')
           },
           function (error) {
             console.log(error);
