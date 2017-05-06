@@ -2,11 +2,13 @@
  * Created by DangThanhLinh on 15/03/2017.
  */
 angular.module('app')
-  .controller('updateTutorPost', function ($state, $scope, $cordovaCamera,$localStorage, $cordovaFile, $cordovaFileTransfer, $cordovaDevice, $ionicPopup, $cordovaActionSheet, tutorPostService, $stateParams) {
+  .controller('updateTutorPost', function ($state, $scope, $cordovaCamera, $localStorage, $cordovaFile, $cordovaFileTransfer, $cordovaDevice, $ionicPopup, $cordovaActionSheet, tutorPostService, $stateParams) {
     $scope.image = null;
     $scope.newPost = [];
     $scope.postDetail = [];
-    $scope.tokenTutor = $localStorage.user.data.token;
+    if ($localStorage.user != null) {
+      $scope.tokenTutor = $localStorage.user.data.token;
+    }
     $scope.createPostTutor = function () {
       var request = {
         subject: $scope.postDetail.subject,
@@ -40,7 +42,7 @@ angular.module('app')
         title: 'Select Image Source',
         buttonLabels: ['Load from Library', 'Use Camera'],
         addCancelButtonWithLabel: 'Cancel',
-        androidEnableCancelButton: true,
+        androidEnableCancelButton: true
       };
       $cordovaActionSheet.show(options).then(function (btnIndex) {
         var type = null;

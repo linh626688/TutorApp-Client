@@ -24,7 +24,7 @@ angular.module('app')
             picture: "http://graph.facebook.com/" + authResponse.userID + "/picture?type=large"
           });
           $ionicLoading.hide();
-          $state.go('app.home');
+          $state.go('app.tutor-posts');
         }, function (fail) {
           // Fail get profile info
           console.log('profile info fail', fail);
@@ -71,13 +71,17 @@ angular.module('app')
                   email: profileInfo.email,
                   picture: "http://graph.facebook.com/" + success.authResponse.userID + "/picture?type=large"
                 });
-
-                $state.go('app.tutor-posts');
+                console.log("User FB", UserService.getUser().email);
+                $scope.createUserFB();
+                // $state.go('app.tutor-posts');
               }, function (fail) {
                 console.log('profile info fail', fail);
               });
           } else {
-            $state.go('app.tutor-posts');
+            $scope.createUserFB();
+            console.log("User FB", UserService.getUser().email);
+
+            // $state.go('app.tutor-posts');
           }
         } else {
           console.log('getLoginStatus', success.status);
@@ -112,7 +116,7 @@ angular.module('app')
           // Facebook logout
           facebookConnectPlugin.logout(function () {
               $ionicLoading.hide();
-              $state.go('welcome');
+              $state.go('app.tutor-posts');
             },
             function (fail) {
               $ionicLoading.hide();
@@ -182,6 +186,27 @@ angular.module('app')
         //ionic.material.ink.displayEffect();
         ionicMaterialInk.displayEffect();
       }, 0);
+    };
+
+    $scope.createUserFB = function () {
+      $scope.userfb = {
+        username: 'USERFB',
+        password: '123456'
+      };
+      OauthService.userLogin($scope.userfb)
+        .then(
+          function (response) {
+            $scope.loading();
+            console.log("response", response);
+            $scope.showPopup();
+            $scope.user = response;
+            $scope.saveStorage($scope.user);
+            $state.go('app.tutor-posts')
+          }
+          , function (error, data) {
+            console.log(error + data)
+          }
+        );
     };
 
     $scope.logOutUser = function () {

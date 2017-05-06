@@ -1,14 +1,14 @@
 <script src="login-controller.js"></script>
 <ion-view view-title="Đăng Nhập" id="welcome-view">
-  <ion-content>
+  <ion-content >
     <ion-refresher
       pulling-text="Pull to refresh..."
       on-refresh="doRefresh()">
     </ion-refresher>
     <div class="logo-welcome"></div>
-    <div class="login-btns">
+    <div class="login-btns" ng-if="!user">
       <hr id="login-divider"/>
-      <div  ng-if="!user">
+      <div  >
         <br>
         <div class="list">
           <label class="item item-input">
@@ -20,10 +20,10 @@
             <input type="password" ng-model="loginData.password">
           </label>
           <label class="item">
-            <button class="button button-block button-positive" ng-click="loginUser()">Log in</button>
+            <button class="button button-block button-positive" ng-click="loginUser()">Đăng Nhập</button>
           </label>
           <label class="item">
-            <button class="button button-block button-positive" ng-click="toRegister()">Sign in</button>
+            <button class="button button-block button-positive" ng-click="toRegister()">Đăng Ký</button>
           </label>
         </div>
       </div>
@@ -31,6 +31,9 @@
         <ul>
           <li ng-click="loginfb()"><span class="ifacebook"><img src="img/social-icons/facebook.png"></span><a class="afacebook">sign in with facebook</a></li>
         </ul>
+        <!--<ul>-->
+          <!--<li ng-click="showLogOutMenu()"><span class="ifacebook"><img src="img/social-icons/facebook.png"></span><a class="afacebook">Logout Facebook</a></li>-->
+        <!--</ul>-->
       </div>
     </div>
   </ion-content>

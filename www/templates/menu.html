@@ -24,7 +24,7 @@
     </ion-header-bar>
     <ion-content class="stable-bg has-expanded-header">
       <ion-list>
-        <ion-item menu-close href="#/app/login">
+        <ion-item menu-close href="#/app/login" ng-if="!user">
           Đăng Nhập
         </ion-item>
         <ion-item menu-close href="#/app/tutor-posts">
@@ -36,16 +36,16 @@
         <ion-item menu-close href="#/app/tutors">
           Danh Sách Gia Sư
         </ion-item>
-        <ion-item menu-close href="#/app/tutor-update">
+        <ion-item menu-close href="#/app/tutor-update"  ng-if="user">
           Thêm Thông tin Cho Gia Sư
         </ion-item>
-        <ion-item menu-close href="#/app/parent-update">
-          Thêm Địa Điểm
+        <ion-item menu-close href="#/app/parent-update"  ng-if="user">
+          Thêm Thông tin Cho Lớp Học
         </ion-item>
-        <ion-item menu-close href="#/app/update-tutor-post">
+        <ion-item menu-close href="#/app/update-tutor-post" ng-if="user">
           Tạo Bài Đăng Cho Gia Sư
         </ion-item>
-        <ion-item menu-close href="#/app/update-parent-post">
+        <ion-item menu-close href="#/app/update-parent-post"  ng-if="user">
           Tạo Bài Đăng Cho Lớp Học
         </ion-item>
         <ion-item menu-close href="#/app/search-tutor">

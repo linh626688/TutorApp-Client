@@ -1,4 +1,4 @@
-<ion-view view-title="Đăng Ký" >
+<ion-view view-title="Đăng Ký">
   <ion-content>
     <div class="list">
       <label class="item item-input item-stacked-label">
@@ -13,13 +13,13 @@
         <div class="input-label">
           Bạn Muốn Đăng Ký Làm :
         </div>
-        <select ng-model="input.role" >
+        <select ng-model="input.role">
           <option ng-repeat="role in roles" value="{{role.value}}">{{role.name}}</option>
         </select>
 
       </label>
       <label class="item item-input item-stacked-label">
-        <button class="button" ng-click="registerUser()"> Submit</button>
+        <button class="button" ng-click="registerUser()">Đăng Ký</button>
       </label>
     </div>
 

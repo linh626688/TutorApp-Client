@@ -34,10 +34,11 @@ angular.module('app')
       })
     }
 
-    function userLogout(token) {
+    function userLogout(token,role) {
       return $http({
-        url: 'http://35.187.156.70:8080/logout',
+        url: 'http://35.187.156.70:8080/addRole',
         method: 'POST',
+        data:role,
         headers: {
           'auth-token': token,
           'Content-Type': 'application/json'
@@ -46,8 +47,15 @@ angular.module('app')
     }
 
 
-    function addRoleUser() {
-
+    function addRoleUser(token) {
+      return $http({
+        url: 'http://35.187.156.70:8080/logout',
+        method: 'POST',
+        headers: {
+          'auth-token': token,
+          'Content-Type': 'application/json'
+        }
+      })
     }
 
     function updateParent(token, data, parentId) {

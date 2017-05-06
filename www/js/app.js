@@ -250,7 +250,7 @@ angular.module('app.config')
       '   <ion-content class="padding">' +
       '       <a class="item button-balanced" ng-click="homePage()"> Trang Chủ </a>' +
       '       <a class="item button-balanced" ng-click="reloadPage()"> Refresh  </a>' +
-      '       <a class="item button-balanced" ng-click="logOutUser()" ng-if ="user"> Đăng Xuất </a>' +
+      '       <a class="item button-balanced" ng-click="logOutUser()" > Đăng Xuất </a>' +
       '   </ion-content>' +
       '</ion-popover-view>';
 
