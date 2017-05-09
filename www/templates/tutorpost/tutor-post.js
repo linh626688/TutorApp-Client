@@ -28,6 +28,9 @@ angular.module('app')
             console.log(error)
           }
         );
+    };
+    $scope.tocreateMessage = function () {
+      $state.go('app.create-message', {postId: $stateParams.postId});
     }
   })
 ;

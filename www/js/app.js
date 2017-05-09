@@ -111,6 +111,33 @@ angular.module('app.config')
           }
         }
       })
+      .state('app.create-message', {
+        url: '/create-message/:postId',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/message/createmessage/create-message.html',
+            controller: 'messageCreateCtrl'
+          }
+        }
+      })
+      .state('/app.list-messages', {
+        url: '/list-messages',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/message/listmessage/messages.html',
+            controller: 'messagesCtrl'
+          }
+        }
+      })
+      .state('/app.list-message', {
+        url: '/list-messages/:messageId',
+        views: {
+          'menuContent': {
+            templateUrl: 'templates/message/listmessage/message.html',
+            controller: 'messageCtrl'
+          }
+        }
+      })
       .state('app.tutor-posts', {
         url: '/tutor-posts',
         views: {
