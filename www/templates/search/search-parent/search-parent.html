@@ -31,34 +31,11 @@
       <ion-list class="animate-ripple">
         <ion-item ng-repeat="post in resultPosts.data">
           <a class="list card stable-bg" href="#/app/tutor-posts/{{post.id}}">
-            <div class="item item-avatar">
+            <div class="item item-thumbnail-left">
               <img src="{{post.imagePost}}">
               <h2>{{post.tutor.name}}<br></h2>
               <h2>{{post.tutor.birth}}</h2>
               <h2>{{post.tutor.currentJob}}</h2>
-            </div>
-            <div class="item item-body">
-              <a class="item item-icon-left">
-                <i class="icon ion-university"></i> {{post.subject}}
-              </a>
-              <a class="item item-icon-left">
-                <i class="icon ion-clock"></i> {{post.time}}
-              </a>
-              <a class="item item-icon-left">
-                <i class="icon ion-ios-cloud-upload"></i> {{post.timePost}}
-              </a>
-              <a class="item item-icon-left">
-                <i class="icon ion-card"></i> {{post.salary}}
-              </a>
-              <a class="item item-icon-left">
-                <i class="icon ion-ios-book"></i> {{post.levelClass}}
-              </a>
-              <a class="item item-icon-left">
-                <i class="icon ion-ios-location"></i> {{post.area}}
-              </a>
-              <p class="item item-icon-left">
-                <i class="icon ion-information-circled"></i> {{post.about}}
-              </p>
             </div>
           </a>
         </ion-item>

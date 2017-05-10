@@ -2,7 +2,7 @@
  * Created by DangThanhLinh on 25/04/2017.
  */
 angular.module('app')
-  .controller('EditTutorPostCtrl', function ($scope, $state, $stateParams, tutorPostService, $localStorage) {
+  .controller('EditTutorPostCtrl', function ($scope,$timeout, $state, $stateParams, tutorPostService, $localStorage) {
     $scope.postDetail = [];
     $scope.edit = [];
     $scope.tokenTutor = $localStorage.user.data.token;
@@ -24,7 +24,9 @@ angular.module('app')
       tutorPostService.editPostTutor(request, $scope.tokenTutor, $stateParams.postId)
         .then(
           function (response) {
+            $scope.loading();
             $scope.post = response.data;
+            $scope.showPopup()
             console.log(response);
             $state.go('app.tutor-post-image', {"postId": $scope.post.id});
           },
@@ -32,7 +34,25 @@ angular.module('app')
             console.log(error);
           }
         )
-    }
-  })
+    };
+    $scope.loading = function () {
+      $ionicLoading.show({
+        template: '<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
+      });
 
-;
+      // For example's sake, hide the sheet after two seconds
+      $timeout(function () {
+        $ionicLoading.hide();
+      }, 2000);
+    };
+    $scope.showPopup = function () {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Cập nhật thành công'
+      });
+
+      $timeout(function () {
+        //ionic.material.ink.displayEffect();
+        ionicMaterialInk.displayEffect();
+      }, 0);
+    };
+  });

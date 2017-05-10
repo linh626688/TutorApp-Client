@@ -120,16 +120,16 @@ angular.module('app.config')
           }
         }
       })
-      .state('/app.list-messages', {
+      .state('app.list-messages', {
         url: '/list-messages',
         views: {
           'menuContent': {
             templateUrl: 'templates/message/listmessage/messages.html',
-            controller: 'messagesCtrl'
+            'controller': 'messagesCtrl'
           }
         }
       })
-      .state('/app.list-message', {
+      .state('app.list-message', {
         url: '/list-messages/:messageId',
         views: {
           'menuContent': {
@@ -291,7 +291,7 @@ angular.module('app.config')
       $window.location.reload(true);
     };
     $scope.homePage = function () {
-      $state.go('app.tutor-posts', {}, {reload: true});
+      $state.go('app.tutor-posts', {reload: true});
     };
     $scope.logOutUser = function () {
       OauthService.userLogout($localStorage.user.token)

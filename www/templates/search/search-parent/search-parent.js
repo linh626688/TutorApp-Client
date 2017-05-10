@@ -2,7 +2,7 @@
  * Created by DangThanhLinh on 01/04/2017.
  */
 angular.module('app')
-  .controller('SearchParentCtrl', function ($scope, SearchParentService, tutorPostService, $cordovaGeolocation, MotionService) {
+  .controller('SearchParentCtrl', function ($scope, $timeout, $ionicLoading, SearchParentService, tutorPostService, $cordovaGeolocation, MotionService) {
     $scope.resultPosts = [];
     $scope.input = [];
     var allPostTutorGPS = [];
@@ -20,7 +20,7 @@ angular.module('app')
 
       for (var i = 0; i < listResponse.length; i++) {
         allPostTutorGPS.push({
-          id : listResponse[i].id,
+          id: listResponse[i].id,
           lat: listResponse[i].lat,
           lng: listResponse[i].lng
         });
@@ -64,6 +64,7 @@ angular.module('app')
       SearchParentService.searchTutorWithDistance($scope.data, $scope.input.distance)
         .then(
           function (response) {
+            $scope.loading();
             $scope.resultPosts = response;
             console.log($scope.resultPosts)
           },
@@ -128,6 +129,7 @@ angular.module('app')
       SearchParentService.searchTutorWithCurrentLocation($scope.coor, $scope.input.distance)
         .then(
           function (response) {
+            $scope.loading();
             $scope.resultPosts = response;
             console.log($scope.coor);
             MotionService.ripple();
@@ -135,6 +137,26 @@ angular.module('app')
           function (error, data) {
             console.log("resquest error")
           })
-    }
+    };
+    $scope.loading = function () {
+      $ionicLoading.show({
+        template: '<div class="loader"><svg class="circular"><circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>'
+      });
 
+      // For example's sake, hide the sheet after two seconds
+      $timeout(function () {
+        $ionicLoading.hide();
+      }, 2000);
+    };
+
+    $scope.showPopup = function () {
+      var alertPopup = $ionicPopup.alert({
+        title: 'Xin chào tới TUTOR APP'
+      });
+
+      $timeout(function () {
+        //ionic.material.ink.displayEffect();
+        ionicMaterialInk.displayEffect();
+      }, 0);
+    };
   });

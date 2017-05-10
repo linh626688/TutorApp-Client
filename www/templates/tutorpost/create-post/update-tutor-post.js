@@ -40,8 +40,8 @@ angular.module('app')
     $scope.loadImage = function () {
       var options = {
         title: 'Select Image Source',
-        buttonLabels: ['Load from Library', 'Use Camera'],
-        addCancelButtonWithLabel: 'Cancel',
+        buttonLabels: ['Chọn Ảnh Từ Thư Viện', 'Chụp Ảnh Từ Camera'],
+        addCancelButtonWithLabel: 'Hủy',
         androidEnableCancelButton: true
       };
       $cordovaActionSheet.show(options).then(function (btnIndex) {

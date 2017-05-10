@@ -29,7 +29,7 @@ angular.module('app')
       });
     }
 
-    function getMessagesDetail(messageId) {
+    function getMessagesDetail(messageId, token) {
       return $http({
         url: 'http://35.187.156.70:8080/getMessagesDetail/' + messageId,
         method: 'GET',
@@ -39,19 +39,20 @@ angular.module('app')
       });
     }
 
-    function removeMessage(messageId) {
+    function removeMessage(messageId,token) {
       return $http({
-        url: 'http://35.187.156.70:8080/getMessagesDetail/' + messageId,
+        url: 'http://35.187.156.70:8080/removeMessage/' + messageId,
         method: 'DELETE',
         headers: {
-          'auth-token': token
+          'auth-token': token,
+          'Content-Type': 'application/json'
         }
       });
     }
 
-    function updateStateMessage(opts,messageId) {
+    function updateStateMessage(opts, token, messageId) {
       return $http({
-        url: 'http://35.187.156.70:8080/updateStateMessage/'+ messageId,
+        url: 'http://35.187.156.70:8080/updateStateMessage/' + messageId,
         method: 'PUT',
         data: opts,
         headers: {
